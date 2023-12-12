@@ -7,14 +7,14 @@ import pyqtgraph as pg
 class MainWindow(QMainWindow):
     promotie: str = "2023-2024"
     team: list[str] = [
-        "NUME1 PRENUME1",
-        "NUME2 PRENUME2",
+        "Niță Claudiu",
+        "Băluți Cristian",
     ]
     def __init__(self):
         super().__init__()
         self.setWindowTitle(f"Proiect Microprocesoare {self.promotie}")
         self.setWindowIcon(QIcon("./icon.png"))
-        
+
 
         primary_layout = QVBoxLayout()
         secondary_layout = QHBoxLayout()
