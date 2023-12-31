@@ -2,7 +2,6 @@
 ".\objects\main.o"
 ".\objects\uart.o"
 ".\objects\adc.o"
-".\objects\clocksettings.o"
 ".\objects\gpio.o"
 ".\objects\pit.o"
 ".\objects\startup_mkl25z4.o"

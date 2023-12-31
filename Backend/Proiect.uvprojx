@@ -410,16 +410,6 @@
               <FilePath>.\Adc.h</FilePath>
             </File>
             <File>
-              <FileName>ClockSettings.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\ClockSettings.c</FilePath>
-            </File>
-            <File>
-              <FileName>ClockSettings.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\ClockSettings.h</FilePath>
-            </File>
-            <File>
               <FileName>gpio.c</FileName>
               <FileType>1</FileType>
               <FilePath>.\gpio.c</FilePath>

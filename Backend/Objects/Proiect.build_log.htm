@@ -22,201 +22,33 @@ Dialog DLL:      TARMCM1.DLL V1.14.6.0
  
 <h2>Project:</h2>
 D:\Facultate\Anul4\Sem1\Microprocesoare\PROIECT\PROIECT\Microprocesoare\Backend\Proiect.uvprojx
-Project File Date:  12/28/2023
+Project File Date:  12/31/2023
 
 <h2>Output:</h2>
 *** Using Compiler 'V6.19', folder: 'C:\Keil_v5\ARM\ARMCLANG\Bin'
 Rebuild target 'Target 1'
-gpio.c(9): warning: invalid UTF-8 in comment [-Winvalid-utf8]
-        // Activarea semnalului de ceas pentru pinii folositi <EE>n cadrul led-ului RGB
-                                                              ^
-gpio.c(48): warning: no newline at end of file [-Wnewline-eof]
-}
- ^
-2 warnings generated.
 compiling gpio.c...
-ClockSettings.c(3): warning: no previous extern declaration for non-static variable 'base_tick' [-Wmissing-variable-declarations]
-uint16_t base_tick;
-         ^
-ClockSettings.c(3): note: declare 'static' if the variable is not intended to be used outside of this translation unit
-uint16_t base_tick;
-^
-ClockSettings.c(4): warning: no previous extern declaration for non-static variable 'tick_50ms' [-Wmissing-variable-declarations]
-uint16_t tick_50ms;
-         ^
-ClockSettings.c(4): note: declare 'static' if the variable is not intended to be used outside of this translation unit
-uint16_t tick_50ms;
-^
-ClockSettings.c(5): warning: no previous extern declaration for non-static variable 'tick_100ms' [-Wmissing-variable-declarations]
-uint16_t tick_100ms;
-         ^
-ClockSettings.c(5): note: declare 'static' if the variable is not intended to be used outside of this translation unit
-uint16_t tick_100ms;
-^
-ClockSettings.c(6): warning: no previous extern declaration for non-static variable 'tick_500ms' [-Wmissing-variable-declarations]
-uint16_t tick_500ms;
-         ^
-ClockSettings.c(6): note: declare 'static' if the variable is not intended to be used outside of this translation unit
-uint16_t tick_500ms;
-^
-ClockSettings.c(7): warning: no previous extern declaration for non-static variable 'tick_1s' [-Wmissing-variable-declarations]
-uint16_t tick_1s;
-         ^
-ClockSettings.c(7): note: declare 'static' if the variable is not intended to be used outside of this translation unit
-uint16_t tick_1s;
-^
-5 warnings generated.
-compiling ClockSettings.c...
 compiling system_MKL25Z4.c...
-Uart.c(13): warning: while loop has empty body [-Wempty-body]
-        while(!(UART0->S1 & UART0_S1_TDRE_MASK));
-                                                ^
-Uart.c(13): note: put the semicolon on a separate line to silence this warning
-Uart.c(21): warning: while loop has empty body [-Wempty-body]
-        while(!(UART0->S1 & UART0_S1_RDRF_MASK));
-                                                ^
-Uart.c(21): note: put the semicolon on a separate line to silence this warning
-Uart.c(55): warning: mixing declarations and code is incompatible with standards before C99 [-Wdeclaration-after-statement]
+compiling Pit.c...
+Uart.c(54): warning: mixing declarations and code is incompatible with standards before C99 [-Wdeclaration-after-statement]
         uint32_t osr = 31; // Pentru un OSR de 32, setam registrul la 31
                  ^
-Uart.c(104): warning: no newline at end of file [-Wnewline-eof]
-}
- ^
-Uart.c(3): warning: no previous extern declaration for non-static variable 'c' [-Wmissing-variable-declarations]
-char c; 
-     ^
-Uart.c(3): note: declare 'static' if the variable is not intended to be used outside of this translation unit
-char c; 
-^
-Uart.c(4): warning: no previous extern declaration for non-static variable 'buffer' [-Wmissing-variable-declarations]
-char buffer[32];
-     ^
-Uart.c(4): note: declare 'static' if the variable is not intended to be used outside of this translation unit
-char buffer[32];
-^
-Uart.c(6): warning: no previous extern declaration for non-static variable 'write' [-Wmissing-variable-declarations]
-int write, read;
-    ^
-Uart.c(6): note: declare 'static' if the variable is not intended to be used outside of this translation unit
-int write, read;
-^
-Uart.c(6): warning: no previous extern declaration for non-static variable 'read' [-Wmissing-variable-declarations]
-int write, read;
-           ^
-Uart.c(6): note: declare 'static' if the variable is not intended to be used outside of this translation unit
-int write, read;
-^
-Uart.c(7): warning: no previous extern declaration for non-static variable 'print_buffer' [-Wmissing-variable-declarations]
-int print_buffer;
-    ^
-Uart.c(7): note: declare 'static' if the variable is not intended to be used outside of this translation unit
-int print_buffer;
-^
-Uart.c(8): warning: no previous extern declaration for non-static variable 'full' [-Wmissing-variable-declarations]
-int full;
-    ^
-Uart.c(8): note: declare 'static' if the variable is not intended to be used outside of this translation unit
-int full;
-^
-10 warnings generated.
+1 warning generated.
 compiling Uart.c...
-main.c(1): warning: In file included from...
-./Adc.h(7): warning: no newline at end of file [-Wnewline-eof]
-void Temperature_Read(void);
-                            ^
-main.c(15): warning: a function declaration without a prototype is deprecated in all versions of C [-Wstrict-prototypes]
+main.c(8): warning: a function declaration without a prototype is deprecated in all versions of C [-Wstrict-prototypes]
 int main() {
         ^
          void
+main.c(24): warning: mixing declarations and code is incompatible with standards before C99 [-Wdeclaration-after-statement]
+                        uint16_t measured_voltage =ADC0_Read();
+                                 ^
 2 warnings generated.
 compiling main.c...
-Pit.c(25): warning: invalid UTF-8 in comment [-Winvalid-utf8]
-  // Activarea <EE>ntreruperilor pe canalul 0
-               ^
-Pit.c(31): warning: invalid UTF-8 in comment [-Winvalid-utf8]
-        // Activarea <EE>ntreruperii mascabile si setarea prioritatiis
-                     ^
-Pit.c(69): warning: no newline at end of file [-Wnewline-eof]
-}
- ^
-Pit.c(9): warning: no previous extern declaration for non-static variable 'timer_value' [-Wmissing-variable-declarations]
-uint32_t timer_value;
-         ^
-Pit.c(9): note: declare 'static' if the variable is not intended to be used outside of this translation unit
-uint32_t timer_value;
-^
-Pit.c(10): warning: no previous extern declaration for non-static variable 'led_state' [-Wmissing-variable-declarations]
-uint8_t led_state;
-        ^
-Pit.c(10): note: declare 'static' if the variable is not intended to be used outside of this translation unit
-uint8_t led_state;
-^
-5 warnings generated.
-compiling Pit.c...
-Adc.c(1): warning: In file included from...
-./Adc.h(7): warning: no newline at end of file [-Wnewline-eof]
-void Temperature_Read(void);
-                            ^
-Adc.c(14): warning: a function declaration without a prototype is deprecated in all versions of C [-Wstrict-prototypes]
-void ADC0_Init() {
-              ^
-               void
-Adc.c(44): warning: a function declaration without a prototype is deprecated in all versions of C [-Wstrict-prototypes]
-int ADC0_Calibrate() {
-                  ^
-                   void
-Adc.c(73): warning: mixing declarations and code is incompatible with standards before C99 [-Wdeclaration-after-statement]
-        uint16_t calibration_var = 0x0000;
-                 ^
-Adc.c(137): warning: a function declaration without a prototype is deprecated in all versions of C [-Wstrict-prototypes]
-void Temperature_Read(){
-                     ^
-                      void
-Adc.c(159): warning: mixing declarations and code is incompatible with standards before C99 [-Wdeclaration-after-statement]
-                uint8_t parte_zecimala = (uint8_t) temperature;
-                        ^
-Adc.c(7): warning: no previous extern declaration for non-static variable 'temperature_read' [-Wmissing-variable-declarations]
-uint16_t temperature_read;
-         ^
-Adc.c(7): note: declare 'static' if the variable is not intended to be used outside of this translation unit
-uint16_t temperature_read;
-^
-Adc.c(8): warning: no previous extern declaration for non-static variable 'CalcVDD' [-Wmissing-variable-declarations]
-uint16_t CalcVDD;
-         ^
-Adc.c(8): note: declare 'static' if the variable is not intended to be used outside of this translation unit
-uint16_t CalcVDD;
-^
-Adc.c(9): warning: no previous extern declaration for non-static variable 'V_ADC_TEMP25' [-Wmissing-variable-declarations]
-uint16_t V_ADC_TEMP25;
-         ^
-Adc.c(9): note: declare 'static' if the variable is not intended to be used outside of this translation unit
-uint16_t V_ADC_TEMP25;
-^
-Adc.c(10): warning: no previous extern declaration for non-static variable 'TempSlope_Low' [-Wmissing-variable-declarations]
-uint16_t TempSlope_Low;
-         ^
-Adc.c(10): note: declare 'static' if the variable is not intended to be used outside of this translation unit
-uint16_t TempSlope_Low;
-^
-Adc.c(11): warning: no previous extern declaration for non-static variable 'Vtemp' [-Wmissing-variable-declarations]
-uint16_t Vtemp;
-         ^
-Adc.c(11): note: declare 'static' if the variable is not intended to be used outside of this translation unit
-uint16_t Vtemp;
-^
-Adc.c(12): warning: no previous extern declaration for non-static variable 'temperature' [-Wmissing-variable-declarations]
-uint16_t temperature;
-         ^
-Adc.c(12): note: declare 'static' if the variable is not intended to be used outside of this translation unit
-uint16_t temperature;
-^
-12 warnings generated.
 compiling Adc.c...
 assembling startup_MKL25Z4.s...
 linking...
-Program Size: Code=2180 RO-data=208 RW-data=0 ZI-data=424  
-".\Objects\Proiect.axf" - 0 Error(s), 36 Warning(s).
+Program Size: Code=2976 RO-data=212 RW-data=0 ZI-data=408  
+".\Objects\Proiect.axf" - 0 Error(s), 3 Warning(s).
 
 <h2>Software Packages used:</h2>
 
@@ -244,9 +76,9 @@ Package Vendor: Keil
 
    * Component: Keil::Device:Startup:2.5.0
       Source file:   Device/Source/system_MKL25Z4.c
-      Source file:   Device/Source/ARM/startup_MKL25Z4.s
       Include file:  Device/Source/system_MKL25Z4.h
-Build Time Elapsed:  00:00:01
+      Source file:   Device/Source/ARM/startup_MKL25Z4.s
+Build Time Elapsed:  00:00:00
 </pre>
 </body>
 </html>

@@ -5,5 +5,4 @@
   C:\Users\nitac\AppData\Local\Arm\Packs\ARM\CMSIS\5.9.0\CMSIS\Core\Include\cmsis_version.h \
   C:\Users\nitac\AppData\Local\Arm\Packs\ARM\CMSIS\5.9.0\CMSIS\Core\Include\cmsis_compiler.h \
   C:\Users\nitac\AppData\Local\Arm\Packs\ARM\CMSIS\5.9.0\CMSIS\Core\Include\cmsis_armclang.h \
-  RTE\Device\MKL25Z128xxx4\system_MKL25Z4.h Uart.h ClockSettings.h \
-  gpio.h Pit.h
+  RTE\Device\MKL25Z128xxx4\system_MKL25Z4.h Uart.h gpio.h Pit.h

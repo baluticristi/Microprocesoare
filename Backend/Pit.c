@@ -1,12 +1,10 @@
 #include "Pit.h"
 #include "Uart.h"
 
-
 #define RED_LED_PIN (18) // PORT B
 #define GREEN_LED_PIN (19) // PORT B
 #define BLUE_LED_PIN (1) // PORT D
 
-uint32_t timer_value;
 uint8_t led_state;
 
 void PIT_Init(void) {
@@ -22,13 +20,13 @@ void PIT_Init(void) {
 	PIT->CHANNEL[0].LDVAL = 0xD970A3; 
 	
 	
-  // Activarea întreruperilor pe canalul 0
+  // Activarea intreruperilor pe canalul 0
 	PIT->CHANNEL[0].TCTRL |= PIT_TCTRL_TIE_MASK;
 	// Activarea timerului de pe canalul 0
 	PIT->CHANNEL[0].TCTRL |= PIT_TCTRL_TEN_MASK;
 	
 
-	// Activarea întreruperii mascabile si setarea prioritatiis
+	/* Activarea intreruperii mascabile si setarea prioritatiis */
 	NVIC_ClearPendingIRQ(PIT_IRQn);
 	NVIC_SetPriority(PIT_IRQn,5);
 	NVIC_EnableIRQ(PIT_IRQn);

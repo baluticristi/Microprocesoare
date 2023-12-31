@@ -10,7 +10,7 @@ int full;
 void UART0_Transmit(uint8_t data)
 {
 	//Punem in asteptare pana cand registrul de transmisie a datelor nu este gol
-	while(!(UART0->S1 & UART0_S1_TDRE_MASK));
+	while(!(UART0->S1 & UART0_S1_TDRE_MASK)){}
 				UART0->D = data;
 	
 }
@@ -18,9 +18,8 @@ void UART0_Transmit(uint8_t data)
 uint8_t UART0_receive(void)
 {
 	//Punem in asteptare pana cand registrul de receptie nu este plin
-	while(!(UART0->S1 & UART0_S1_RDRF_MASK));
+	while(!(UART0->S1 & UART0_S1_RDRF_MASK)){}
 				return UART0->D;
-	
 }
 
 void UART0_Init(uint32_t baud_rate)
@@ -82,6 +81,7 @@ void UART0_Init(uint32_t baud_rate)
 	
 	UART0->C2 |= ((UART_C2_RE_MASK) | (UART_C2_TE_MASK));
 	
+	NVIC_SetPriority(UART0_IRQn,1);
 	NVIC_EnableIRQ(UART0_IRQn);
 	
 }
