@@ -50,13 +50,13 @@ void UART0_Init(uint32_t baud_rate)
 	//UART0->S2 |= UART0_S2_RXINV_MASK; // Seteaza UARTx_S2[RXINV] la 1 pentru a inversa datele la receptie (RX)
 	
 	
-	// Presupunem ca DEFAULT_SYSTEM_CLOCK ?i baud_rate sunt deja definite corespunzator
+	// Presupunem ca DEFAULT_SYSTEM_CLOCK si baud_rate sunt deja definite corespunzator
 	uint32_t osr = 31; // Pentru un OSR de 32, setam registrul la 31
 
 	// Calculeaza Baud Rate Divisor (sbr) pe baza osr dat
 	uint16_t sbr = (uint16_t)((DEFAULT_SYSTEM_CLOCK) / (baud_rate * (osr + 1))); // OSR+1 este acum 32
 
-	// Extrage bitii high ?i low din sbr
+	// Extrage bitii high si low din sbr
 	uint8_t sbr_high = (uint8_t)((sbr & 0x1F00) >> 8);
 	uint8_t sbr_low = (uint8_t)(sbr & 0xFF);
 

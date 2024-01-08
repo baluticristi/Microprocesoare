@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="5205045e-497b-4e98-b742-fbe1ff2c35c5" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/../Backend/Adc.c" beforeDir="false" afterPath="$PROJECT_DIR$/../Backend/Adc.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Backend/Listings/Proiect.map" beforeDir="false" afterPath="$PROJECT_DIR$/../Backend/Listings/Proiect.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Backend/Objects/Proiect.axf" beforeDir="false" afterPath="$PROJECT_DIR$/../Backend/Objects/Proiect.axf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Backend/Objects/Proiect.build_log.htm" beforeDir="false" afterPath="$PROJECT_DIR$/../Backend/Objects/Proiect.build_log.htm" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Backend/Objects/Proiect.htm" beforeDir="false" afterPath="$PROJECT_DIR$/../Backend/Objects/Proiect.htm" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Backend/Objects/Proiect_Target 1.dep" beforeDir="false" afterPath="$PROJECT_DIR$/../Backend/Objects/Proiect_Target 1.dep" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Backend/Objects/adc.o" beforeDir="false" afterPath="$PROJECT_DIR$/../Backend/Objects/adc.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Backend/Objects/main.o" beforeDir="false" afterPath="$PROJECT_DIR$/../Backend/Objects/main.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Backend/Proiect.uvguix.nitac" beforeDir="false" afterPath="$PROJECT_DIR$/../Backend/Proiect.uvguix.nitac" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Backend/Proiect.uvoptx" beforeDir="false" afterPath="$PROJECT_DIR$/../Backend/Proiect.uvoptx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Backend/Uart.c" beforeDir="false" afterPath="$PROJECT_DIR$/../Backend/Uart.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Backend/main.c" beforeDir="false" afterPath="$PROJECT_DIR$/../Backend/main.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/GUI.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/GUI.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main_window.py" beforeDir="false" afterPath="$PROJECT_DIR$/main_window.py" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;customColor&quot;: &quot;&quot;,
+  &quot;associatedIndex&quot;: 7
+}</component>
+  <component name="ProjectId" id="2aUko9FQIQEwibWueagxBNqM3Jh" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Python.Proiect.executor": "Run",
+    "Python.main.executor": "Run",
+    "Python.main_window.executor": "Run",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "main",
+    "last_opened_file_path": "D:/Facultate/Anul4/Sem1/Microprocesoare/PROIECT/PROIECT/Microprocesoare/GUI/main.py",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
+  <component name="RunManager">
+    <configuration name="Proiect" type="PythonConfigurationType" factoryName="Python">
+      <module name="GUI" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="SDK_NAME" value="Python 3.10 (GUI)" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/main.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-python-sdk-67fca87a943a-c986f194a52a-com.jetbrains.pycharm.pro.sharedIndexes.bundled-PY-233.11799.259" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="5205045e-497b-4e98-b742-fbe1ff2c35c5" name="Changes" comment="" />
+      <created>1704380718124</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1704380718124</updated>
+      <workItem from="1704380721894" duration="6979000" />
+      <workItem from="1704695009451" duration="4741000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/GUI$Proiect.coverage" NAME="Proiect Coverage Results" MODIFIED="1704699808657" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+    <SUITE FILE_PATH="coverage/GUI$main_window.coverage" NAME="main_window Coverage Results" MODIFIED="1704697050818" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/GUI$main.coverage" NAME="main Coverage Results" MODIFIED="1704697008425" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+  </component>
+</project>
