@@ -1,7 +1,9 @@
+import numpy as np
 from PySide6.QtWidgets import QMainWindow, QHBoxLayout, QVBoxLayout, QWidget, QGroupBox, QLabel, QPushButton, QLineEdit, \
     QTextEdit
 from PySide6.QtGui import QIcon, QPalette, QColor, QFont
 from PySide6.QtCore import Qt, QThread, Signal
+from PySide6.QtWidgets import QApplication
 import pyqtgraph as pg
 import serial
 import re
@@ -20,7 +22,8 @@ class SerialThread(QThread):
         self.serial_instance = serial_instance
 
     def run(self):
-        ser.flush()
+        ser.flushInput()
+
         while True:
             bytes_read = ser.readline()
 
@@ -31,31 +34,12 @@ class SerialThread(QThread):
                     number= 0
                 number = int(cleaned_str)
                 self.received.emit(number)
+            elif bytes_read == b'':
+                pass
 
             else:
                 # Handle the case where fewer than 6 bytes were received
-                print(f"Cleaning buffer, please wait...")
-        # while True:
-        #     if self.serial_instance.in_waiting > 0:
-        #         raw_data = self.serial_instance.readline()
-        #
-        #         try:
-        #
-        #             reading = raw_data.decode('ascii').rstrip('\r\n')
-        #            # self.received.emit(reading)  # Emit the signal with the reading
-        #
-        #             clean_reading = ''.join(filter(str.isdigit, reading))
-        #
-        #             if clean_reading:  # Ensure it's not empty after cleaning
-        #                 digits = int(clean_reading)
-        #                 print("Read: ", digits)
-        #
-        #                 # self.received.emit(digits)
-        #             else:
-        #                print(f"Received")
-        #         #
-        #         except ValueError as e:
-        #             print(f"Error")
+                print(f"Cleaning buffer, please wait...",bytes_read)
 
 
 
@@ -70,7 +54,7 @@ class MainWindow(QMainWindow):
         super().__init__()
         self.setWindowTitle(f"Proiect Microprocesoare {self.promotie}")
         self.setWindowIcon(QIcon("./icon.png"))
-
+        self.setMinimumSize(1000, 600)
         primary_layout = QVBoxLayout()
         secondary_layout = QHBoxLayout()
         tertiary_layout = QVBoxLayout()
@@ -95,11 +79,16 @@ class MainWindow(QMainWindow):
         control_panel_box = QGroupBox("Control Panel")
         control_panel_box.setFont(bold_font)
 
-        button1 = QPushButton("write")
-        button2 = QPushButton("Control 2")
-        button3 = QPushButton("Send")
+        button1 = QPushButton("Reverse")
+        button2 = QPushButton("Shutdown")
+        button1.setFixedHeight(40)
+        button2.setFixedHeight(40)
+        #button3 = QPushButton("Send")
         # button1.clicked.connect(self.connect_serial)
-        button3.clicked.connect(self.send_input)
+        button1.clicked.connect(self.reverse)
+        button2.clicked.connect(self.shutdown)
+       # button3.clicked.connect(self.send_input)
+
         self.line_edit = QLineEdit()
         self.line_edit.setAlignment(Qt.AlignmentFlag.AlignBottom)
         line_edit_label = QLabel("Input:", parent=self.line_edit)
@@ -108,10 +97,10 @@ class MainWindow(QMainWindow):
         control_panel_box_layout.addWidget(button1, 1)
         control_panel_box_layout.addWidget(button2, 1)
 
-        control_panel_box_layout.addStretch()
-        control_panel_box_layout.addWidget(line_edit_label)
-        control_panel_box_layout.addWidget(self.line_edit, 1)
-        control_panel_box_layout.addWidget(button3, 1)
+        # control_panel_box_layout.addStretch()
+        # control_panel_box_layout.addWidget(line_edit_label)
+        # control_panel_box_layout.addWidget(self.line_edit, 1)
+        # control_panel_box_layout.addWidget(button3, 1)
 
         control_panel_box.setLayout(control_panel_box_layout)
 
@@ -122,10 +111,12 @@ class MainWindow(QMainWindow):
         #self.setCentralWidget(self.plot_widget)
 
         # Initial data
-        self.hour = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
-        self.sound = [30, 32, 34, 32, 33, 31, 29, 32, 35, 45]
-        self.plot_widget.setYRange(0, 3500)       # Plot the initial data
-        self.curve = self.plot_widget.plot(self.hour, self.sound, pen='y')
+        self.hour = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10,11,12]
+        self.sound = [30, 32, 34, 32, 33, 31, 29, 32, 35, 45, 50, 55]
+        self.plot_widget.setYRange(0, 2000)       # Plot the initial data
+        #self.curve = self.plot_widget.plot(self.hour, self.sound, pen='y')
+        bar_graph = pg.BarGraphItem(x=self.hour, height=self.sound, width=0.5, brush='y')
+        self.plot_widget.addItem(bar_graph)
 
         secondary_layout.addWidget(self.plot_widget, 3)
         secondary_layout.addLayout(tertiary_layout, 1)
@@ -134,12 +125,12 @@ class MainWindow(QMainWindow):
         self.text_edit = QTextEdit()
         self.text_edit.setReadOnly(True)
 
-        debug_box = QGroupBox("Debug")
-        debug_box_layout = QVBoxLayout()
-        debug_box_layout.addWidget(self.text_edit, 1)
-        debug_box.setLayout(debug_box_layout)
-
-        primary_layout.addWidget(debug_box, 1)
+        # debug_box = QGroupBox("Debug")
+        # debug_box_layout = QVBoxLayout()
+        # debug_box_layout.addWidget(self.text_edit, 1)
+        # debug_box.setLayout(debug_box_layout)
+        #
+        # primary_layout.addWidget(debug_box, 1)
 
         widget = QWidget()
         widget.setLayout(primary_layout)
@@ -156,15 +147,32 @@ class MainWindow(QMainWindow):
         self.text_edit.insertPlainText(f"RECEIVED: {data}\n")
 
     def update_plot(self, value):
-        self.hour.append(self.hour[-1] + 1)  # Increment the last hour value
         self.sound.append(value)
+        if len(self.sound) > 5000:
+            self.sound = self.sound[-1000:]
+        if len(self.sound) % 20 == 0:
+            self.hour.append(self.hour[-1] + 1)
+            last_n_entries = self.sound[-20:]  # Get the last 10 entries
+            average_sound = np.mean(last_n_entries)
+           # self.curve.setData(self.hour, self.sound)  # Update the data.
+           # self.plot_widget.clear()
+            if average_sound < 250:
+                color = 'g'
+            elif average_sound < 1000:
+                color = 'y'
+            else:
+                color = 'r'
 
-        self.curve.setData(self.hour, self.sound)  # Update the data.
+            new_bar_graph = pg.BarGraphItem(x=self.hour[-1], height=average_sound,
+                                        width=0.6, brush=color)
 
-        window_size = 10
+            self.plot_widget.addItem(new_bar_graph)
+            window_size = 20
 
-        if len(self.hour) > window_size:
-            self.plot_widget.setXRange(self.hour[-window_size], self.hour[-1])
+            if len(self.hour) > window_size:
+                self.plot_widget.setXRange(self.hour[-window_size], self.hour[-1])
+            if len(self.plot_widget.plotItem.items) > window_size:
+                self.plot_widget.plotItem.removeItem(self.plot_widget.plotItem.items[0])
 
     def send_input(self):
         input_text = self.line_edit.text()
@@ -172,9 +180,15 @@ class MainWindow(QMainWindow):
         self.line_edit.clear()
         self.text_edit.insertPlainText(f"SENT: {input_text}\n")
 
-    def closeEvent(self, event):
-        # Close the serial port and stop the thread
+
+    def shutdown(self):
         ser.close()
         self.serial_thread.terminate()
         self.serial_thread.wait()
-        event.accept()
+
+        self.close()
+        QApplication.quit()
+
+    def reverse(self):
+        ser.write(b'1')
+        self.text_edit.insertPlainText(f"SENT: Reverse signal\n")
