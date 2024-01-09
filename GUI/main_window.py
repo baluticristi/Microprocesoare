@@ -4,7 +4,7 @@ from PySide6.QtGui import QIcon, QPalette, QColor, QFont
 from PySide6.QtCore import Qt, QThread, Signal
 import pyqtgraph as pg
 import serial
-
+import re
 
 
 
@@ -20,25 +20,42 @@ class SerialThread(QThread):
         self.serial_instance = serial_instance
 
     def run(self):
+        ser.flush()
         while True:
-            if self.serial_instance.in_waiting > 0:
-                raw_data = self.serial_instance.readline()
+            bytes_read = ser.readline()
 
-                try:
-                    # Decode and strip carriage returns, new lines, null bytes, and spaces
-                    reading = raw_data.decode(errors='ignore').rstrip('\r\n\x00 ')
+            if len(bytes_read) == 6:
+                digits_str = bytes_read.decode('ascii').strip('\r\n')
+                cleaned_str = re.sub(r'[^\d]', '', digits_str)
+                if(cleaned_str == ''):
+                    number= 0
+                number = int(cleaned_str)
+                self.received.emit(number)
 
-                    # Filter out non-digit characters before attempting to convert to an integer
-                    clean_reading = ''.join(filter(str.isdigit, reading))
-
-                    if clean_reading:  # Ensure it's not empty after cleaning
-                        digits = int(clean_reading)
-                        self.received.emit(digits)
-                    else:
-                        print(f"Received non-numeric data: {reading}")
-
-                except ValueError as e:
-                    print(f"Error converting '{reading}' to an integer: {e}")
+            else:
+                # Handle the case where fewer than 6 bytes were received
+                print(f"Cleaning buffer, please wait...")
+        # while True:
+        #     if self.serial_instance.in_waiting > 0:
+        #         raw_data = self.serial_instance.readline()
+        #
+        #         try:
+        #
+        #             reading = raw_data.decode('ascii').rstrip('\r\n')
+        #            # self.received.emit(reading)  # Emit the signal with the reading
+        #
+        #             clean_reading = ''.join(filter(str.isdigit, reading))
+        #
+        #             if clean_reading:  # Ensure it's not empty after cleaning
+        #                 digits = int(clean_reading)
+        #                 print("Read: ", digits)
+        #
+        #                 # self.received.emit(digits)
+        #             else:
+        #                print(f"Received")
+        #         #
+        #         except ValueError as e:
+        #             print(f"Error")
 
 
 
@@ -106,9 +123,9 @@ class MainWindow(QMainWindow):
 
         # Initial data
         self.hour = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
-        self.temperature = [30, 32, 34, 32, 33, 31, 29, 32, 35, 45]
-        self.plot_widget.setYRange(0, 4000)       # Plot the initial data
-        self.curve = self.plot_widget.plot(self.hour, self.temperature, pen='y')
+        self.sound = [30, 32, 34, 32, 33, 31, 29, 32, 35, 45]
+        self.plot_widget.setYRange(0, 3500)       # Plot the initial data
+        self.curve = self.plot_widget.plot(self.hour, self.sound, pen='y')
 
         secondary_layout.addWidget(self.plot_widget, 3)
         secondary_layout.addLayout(tertiary_layout, 1)
@@ -140,14 +157,12 @@ class MainWindow(QMainWindow):
 
     def update_plot(self, value):
         self.hour.append(self.hour[-1] + 1)  # Increment the last hour value
-        self.temperature.append(value)
+        self.sound.append(value)
 
-        # Update the plot with the new data
-        self.curve.setData(self.hour, self.temperature)  # Update the data.
+        self.curve.setData(self.hour, self.sound)  # Update the data.
 
-        # Optionally, if you want to limit the number of displayed points:
         window_size = 10
-        print(self.hour)
+
         if len(self.hour) > window_size:
             self.plot_widget.setXRange(self.hour[-window_size], self.hour[-1])
 

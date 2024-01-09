@@ -62,7 +62,7 @@ int main() {
 		
 			UART0_Transmit(0x30);
 			UART0_Transmit(0x30);
-			UART0_Transmit( 0x30);
+			UART0_Transmit(0x30);
 			UART0_Transmit(0x30);
 			
 			UART0_Transmit(0x0D);
