@@ -83,11 +83,9 @@ class MainWindow(QMainWindow):
         button2 = QPushButton("Shutdown")
         button1.setFixedHeight(40)
         button2.setFixedHeight(40)
-        #button3 = QPushButton("Send")
-        # button1.clicked.connect(self.connect_serial)
+
         button1.clicked.connect(self.reverse)
         button2.clicked.connect(self.shutdown)
-       # button3.clicked.connect(self.send_input)
 
         self.line_edit = QLineEdit()
         self.line_edit.setAlignment(Qt.AlignmentFlag.AlignBottom)
@@ -97,10 +95,6 @@ class MainWindow(QMainWindow):
         control_panel_box_layout.addWidget(button1, 1)
         control_panel_box_layout.addWidget(button2, 1)
 
-        # control_panel_box_layout.addStretch()
-        # control_panel_box_layout.addWidget(line_edit_label)
-        # control_panel_box_layout.addWidget(self.line_edit, 1)
-        # control_panel_box_layout.addWidget(button3, 1)
 
         control_panel_box.setLayout(control_panel_box_layout)
 
@@ -108,13 +102,13 @@ class MainWindow(QMainWindow):
         tertiary_layout.addWidget(control_panel_box, 5)
 
         self.plot_widget = pg.PlotWidget(self)
-        #self.setCentralWidget(self.plot_widget)
+
 
         # Initial data
         self.hour = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10,11,12]
         self.sound = [30, 32, 34, 32, 33, 31, 29, 32, 35, 45, 50, 55]
         self.plot_widget.setYRange(0, 2000)       # Plot the initial data
-        #self.curve = self.plot_widget.plot(self.hour, self.sound, pen='y')
+
         bar_graph = pg.BarGraphItem(x=self.hour, height=self.sound, width=0.5, brush='y')
         self.plot_widget.addItem(bar_graph)
 
@@ -125,26 +119,15 @@ class MainWindow(QMainWindow):
         self.text_edit = QTextEdit()
         self.text_edit.setReadOnly(True)
 
-        # debug_box = QGroupBox("Debug")
-        # debug_box_layout = QVBoxLayout()
-        # debug_box_layout.addWidget(self.text_edit, 1)
-        # debug_box.setLayout(debug_box_layout)
-        #
-        # primary_layout.addWidget(debug_box, 1)
 
         widget = QWidget()
         widget.setLayout(primary_layout)
-        # ... [Set up SerialThread and connect signals] ...
-        self.serial_thread = SerialThread(ser)  # You would pass your actual serial port instance
-        self.serial_thread.received.connect(self.update_plot)
-        self.serial_thread.start()
+
 
 
 
         self.setCentralWidget(widget)
 
-    def append_to_debug(self, data):
-        self.text_edit.insertPlainText(f"RECEIVED: {data}\n")
 
     def update_plot(self, value):
         self.sound.append(value)
