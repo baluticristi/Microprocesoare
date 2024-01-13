@@ -6,6 +6,7 @@
 #define BLUE_LED_PIN (1) // PORT D
 
 uint8_t led_state;
+volatile uint16_t switcher_pit;
 
 void PIT_Init(void) {
 	led_state=0;
@@ -37,7 +38,8 @@ void PIT_IRQHandler(void) {
 	if(PIT->CHANNEL[0].TFLG & PIT_TFLG_TIF_MASK) {
 		
 		PIT->CHANNEL[0].TFLG &= PIT_TFLG_TIF_MASK;
-		if(led_state==0) {
+		if(switcher_pit==0){
+		if(led_state==0 ) {
 			GPIOB->PCOR |= (1<<RED_LED_PIN);
 			GPIOB->PSOR |= (1<<GREEN_LED_PIN);
 			GPIOD->PSOR |= (1<<BLUE_LED_PIN);
@@ -63,5 +65,36 @@ void PIT_IRQHandler(void) {
 		}
 		led_state++;
 		led_state%=4;
+	}else{
+		
+		if(led_state==0 ) {
+			
+			GPIOB->PSOR |= (1<<RED_LED_PIN);
+			GPIOB->PCOR |= (1<<GREEN_LED_PIN);
+			GPIOD->PCOR |= (1<<BLUE_LED_PIN);
+		
+		}
+		else if(led_state==1) {
+			GPIOB->PCOR |= (1<<RED_LED_PIN);
+			GPIOB->PSOR |= (1<<GREEN_LED_PIN);
+			GPIOD->PCOR |= (1<<BLUE_LED_PIN);
+			
+			
+		}
+		else if(led_state==2) {
+			GPIOB->PSOR |= (1<<RED_LED_PIN);
+			GPIOB->PCOR |= (1<<GREEN_LED_PIN);
+			GPIOD->PSOR |= (1<<BLUE_LED_PIN);
+			
+		}
+		else if(led_state==3) {
+			GPIOB->PCOR |= (1<<RED_LED_PIN);
+			GPIOB->PSOR |= (1<<GREEN_LED_PIN);
+			GPIOD->PSOR |= (1<<BLUE_LED_PIN);
+			
+		}
+		led_state++;
+		led_state%=4;
+	}
 	}
 }

@@ -17,23 +17,43 @@ int main() {
 		
 			uint16_t measured_sound =ADC0_Read();
 	
-		int switcher=0;
-		if (measured_sound <= 250&&switcher==0) {
+		
+		if(switcher ==0)
+		{if (measured_sound <= 250) {
 						GPIOA_PSOR |= (1 << Bread_RED_LED_PIN);
 						GPIOC_PCOR |= (1 << Bread_BLUE_LED_PIN);
 						GPIOA_PCOR |= (1 << Bread_YELLOW_LED_PIN);
 		}
-		else if (measured_sound < 1250&&switcher==0) {
+		else if (measured_sound < 1500) {
 						GPIOA_PSOR |= (1 << Bread_YELLOW_LED_PIN);
 						GPIOA_PSOR |= (1 << Bread_RED_LED_PIN);
 						GPIOC_PCOR |= (1 << Bread_BLUE_LED_PIN);
 				}
-		else if(measured_sound > 1250&&switcher==0){
+		else if(measured_sound > 1500){
 						GPIOC_PSOR |= (1 << Bread_BLUE_LED_PIN);
 						GPIOA_PSOR |= (1 << Bread_RED_LED_PIN);
 						GPIOA_PSOR |= (1 << Bread_YELLOW_LED_PIN);
 				}
-
+			}
+		else {if (measured_sound <= 250) {
+						GPIOA_PCOR |= (1 << Bread_RED_LED_PIN);
+						GPIOC_PSOR |= (1 << Bread_BLUE_LED_PIN);
+						GPIOA_PCOR |= (1 << Bread_YELLOW_LED_PIN);
+		}
+		else if (measured_sound < 1500) {
+						GPIOA_PSOR |= (1 << Bread_YELLOW_LED_PIN);
+						GPIOA_PCOR |= (1 << Bread_RED_LED_PIN);
+						GPIOC_PSOR |= (1 << Bread_BLUE_LED_PIN);
+				}
+		else if(measured_sound > 1500){
+						GPIOC_PSOR |= (1 << Bread_BLUE_LED_PIN);
+						GPIOA_PSOR |= (1 << Bread_RED_LED_PIN);
+						GPIOA_PSOR |= (1 << Bread_YELLOW_LED_PIN);
+			
+			
+			
+		}}
+		
 			
 				
 
@@ -76,11 +96,6 @@ int main() {
 				UART0_Transmit(0x0A);
 			}
 		
-
-
-		
-			
-				
 
 	}
 	

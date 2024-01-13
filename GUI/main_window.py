@@ -79,13 +79,16 @@ class MainWindow(QMainWindow):
         control_panel_box = QGroupBox("Control Panel")
         control_panel_box.setFont(bold_font)
 
-        button1 = QPushButton("Reverse")
+        button1 = QPushButton("Reverse GPIO")
+        button3 = QPushButton("Reverse PIT")
         button2 = QPushButton("Shutdown")
         button1.setFixedHeight(40)
         button2.setFixedHeight(40)
+        button3.setFixedHeight(40)
 
-        button1.clicked.connect(self.reverse)
+        button1.clicked.connect(self.reverse_gpio)
         button2.clicked.connect(self.shutdown)
+        button3.clicked.connect(self.reverse_pit)
 
         self.line_edit = QLineEdit()
         self.line_edit.setAlignment(Qt.AlignmentFlag.AlignBottom)
@@ -93,7 +96,9 @@ class MainWindow(QMainWindow):
         control_panel_box_layout = QVBoxLayout()
         control_panel_box_layout.setSpacing(5)
         control_panel_box_layout.addWidget(button1, 1)
+        control_panel_box_layout.addWidget(button3, 1)
         control_panel_box_layout.addWidget(button2, 1)
+
 
 
         control_panel_box.setLayout(control_panel_box_layout)
@@ -107,7 +112,7 @@ class MainWindow(QMainWindow):
         # Initial data
         self.hour = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10,11,12]
         self.sound = [30, 32, 34, 32, 33, 31, 29, 32, 35, 45, 50, 55]
-        self.plot_widget.setYRange(0, 2000)       # Plot the initial data
+        self.plot_widget.setYRange(0, 2500)       # Plot the initial data
 
         bar_graph = pg.BarGraphItem(x=self.hour, height=self.sound, width=0.5, brush='y')
         self.plot_widget.addItem(bar_graph)
@@ -172,6 +177,10 @@ class MainWindow(QMainWindow):
         self.close()
         QApplication.quit()
 
-    def reverse(self):
+    def reverse_gpio(self):
         ser.write(b'1')
+        self.text_edit.insertPlainText(f"SENT: Reverse signal\n")
+
+    def reverse_pit(self):
+        ser.write(b'2')
         self.text_edit.insertPlainText(f"SENT: Reverse signal\n")
